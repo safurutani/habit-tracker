@@ -1,0 +1,20 @@
+# Build output
+bin/
+obj/
+
+# User-specific files
+.vs/
+.vscode/
+*.user
+*.suo
+*.rsuser
+*.sln.docstates
+
+# Environment & secrets
+appsettings.json
+appsettings.*.json
+secrets.json
+
+# Logs & Debug
+logs/
+*.log
