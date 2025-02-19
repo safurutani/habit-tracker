@@ -1,0 +1,17 @@
+<div *ngIf="habit" class="habit-details">
+  <h2><strong>{{ habit.name }}</strong></h2>
+
+  <p>{{ habit.description }}</p>
+  <p>Goal: {{ habit.goal }}</p>
+  <p>Frequency:{{ habit.frequency }} per {{ habit.frequencyUnit }}</p>
+  <p>Start Date: {{ habit.startDate | date:'MMMM d, yyyy'}}</p>
+  <p>Total Completions: {{ habit.totalCompleted }}</p>
+  <p>Last Completed: {{ habit.lastCompleted ? (habit.lastCompleted | date:'MMMM d, yyyy') : 'Not completed yet' }}</p>
+  <p>Streak: {{ habit.streak }} (Longest: {{ habit.longestStreak }})</p>
+  <div class="active-field">
+    <p>Active </p><mat-slide-toggle [(ngModel)]="habit.isActive" (change)="onChange($event.checked)"></mat-slide-toggle>
+  </div>
+  <button [routerLink]="['/edit', habit.id]">Edit</button>
+  <button>Delete</button>
+  <button routerLink="/habits">Back to List</button>
+</div>

@@ -1,0 +1,11 @@
+<div class="habit-card">
+  <div class="info">
+    <h3><a [routerLink]="['/habit',habit.id]"><strong>{{ habit.name }}</strong></a></h3>
+    <p class="habit-desc">{{ habit.description }}</p>
+    <p>Frequency: {{ habit.frequency }} per {{ habit.frequencyUnit }}</p>
+    <div class="completion-details">
+      <p>Total Completed: {{ habit.totalCompleted }}</p>
+      <p class="streak">Streak: {{ habit.streak }}</p>
+    </div>
+  </div>
+</div>

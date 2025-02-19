@@ -1,0 +1,29 @@
+<div class="edit-form">
+  <h2>Editing Habit</h2>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Habit Name</label>
+      <input id="name" formControlName="name" required />
+    </div>
+    <div>
+      <label for="description">Description</label>
+      <input id="description" formControlName="description" />
+    </div>
+    <div>
+      <label for="goal">Goal</label>
+      <input id="goal" formControlName="goal" type="number" />
+    </div>
+    <div class="frequency">
+      <label for="frequency">Frequency</label>
+      <input id="frequency" formControlName="frequency" required type="number" />
+      <p>per</p>
+      <select id="frequencyUnit" formControlName="frequencyUnit" required>
+        <option value="day">Day</option>
+        <option value="week">Week</option>
+        <option value="month">Month</option>
+        <option value="year">Year</option>
+      </select>
+    </div>
+    <button type="submit" [disabled]="editForm.invalid">Save Changes</button>
+  </form>
+</div>

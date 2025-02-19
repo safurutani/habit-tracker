@@ -1,0 +1,12 @@
+.habit-details {
+    padding: 1rem;
+    margin-left: 2rem;
+}
+
+.active-field {
+    display: flex;
+    mat-slide-toggle {
+        margin-left: 1rem;
+    }
+}
+

@@ -1,0 +1,8 @@
+<h2>Habit List</h2>
+<ul *ngIf="habits.length > 0; else noHabits">
+  <app-habit *ngFor="let habit of habits" [habit]="habit"></app-habit>
+</ul>
+
+<ng-template #noHabits>
+  <p>No habits found.</p>
+</ng-template>

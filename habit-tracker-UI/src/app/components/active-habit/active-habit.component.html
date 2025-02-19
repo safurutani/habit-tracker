@@ -1,0 +1,15 @@
+<div class="active-habit">
+  <div class="info">
+    <h3><a [routerLink]="['/habit',habit.id]"><strong>{{ habit.name }}</strong></a></h3>
+    <p>Frequency: {{ habit.frequency }} per {{ habit.frequencyUnit }}</p>
+    <div class="completion-details">
+      <p>Total Completed: {{ habit.totalCompleted }}</p>
+      <p class="streak">Streak: {{ habit.streak }}</p>
+    </div>
+  </div>
+  <div class="card-actions">
+    <button (click)="updateProgress(false)">-</button>
+    <button (click)="updateProgress(true)">+</button>
+  </div>
+
+</div>
