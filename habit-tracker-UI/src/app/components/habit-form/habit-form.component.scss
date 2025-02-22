@@ -1,10 +1,24 @@
 .frequency {
-    display: flex;
-    p {
-        padding: 0px 10px;
-    }
+  display: flex;
+  align-items: center;
+  .divider {
+    margin: 0 5px;
+  }
 }
-form, h2 {
+.create-habit-form {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  max-width: 600px;
+  margin: 0 auto;
+}
+form {
   padding: 1rem;
-  margin-left: 2rem;
+  margin: auto;
+}
+
+.create-habit-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

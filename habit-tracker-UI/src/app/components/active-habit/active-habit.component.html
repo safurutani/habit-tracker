@@ -1,15 +1,20 @@
-<div class="active-habit">
-  <div class="info">
-    <h3><a [routerLink]="['/habit',habit.id]"><strong>{{ habit.name }}</strong></a></h3>
-    <p>Frequency: {{ habit.frequency }} per {{ habit.frequencyUnit }}</p>
-    <div class="completion-details">
-      <p>Total Completed: {{ habit.totalCompleted }}</p>
+<mat-card class="active-habit">
+  <h3><a [routerLink]="['/habit',habit.id]"><strong>{{ habit.name }}</strong></a></h3>
+  <div class="details">
+    <div class="info">
+      <p>{{ habit.frequency }} per {{ habit.frequencyUnit }}</p>
       <p class="streak">Streak: {{ habit.streak }}</p>
     </div>
+    <div class="completion-details">
+      <div class="completed">
+        <p>Completed:</p>
+        <p class="big-number">{{ habit.totalCompleted }}</p>
+      </div>
+      <div class="plus-minus">
+        <button (click)="updateProgress(false)">-</button>
+        <div class="divider"></div>
+        <button (click)="updateProgress(true)">+</button>
+      </div>
+    </div>
   </div>
-  <div class="card-actions">
-    <button (click)="updateProgress(false)">-</button>
-    <button (click)="updateProgress(true)">+</button>
-  </div>
-
-</div>
+</mat-card>

@@ -1,24 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HabitService } from '../../services/habit.service';
 import { Habit } from '../../models/habit';
 import { CommonModule } from '@angular/common';
 import { HabitComponent } from '../habit/habit.component';
 import { RouterLink } from '@angular/router';
+import { MatTableModule, MatTableDataSource } from '@angular/material/table';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-habit-list',
   standalone: true,
-  imports: [CommonModule, HabitComponent, RouterLink],
+  imports: [CommonModule, HabitComponent, RouterLink, MatTableModule, MatSortModule, MatPaginatorModule],
   templateUrl: './habit-list.component.html',
   styleUrl: './habit-list.component.scss'
 })
 export class HabitListComponent implements OnInit {
-  habits: Habit[] = [];
+  displayedColumns: string[] = ['name', 'description', 'frequency', 'totalCompleted', 'streak','active'];
+  dataSource = new MatTableDataSource<Habit>([]);
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
   constructor(private habitService: HabitService) { }
 
   ngOnInit(): void {
     this.habitService.getHabits().subscribe((data: Habit[]) => {
-      this.habits = data;
+      console.log("Fetched habits:", data);
+      this.dataSource.data = data;
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     });
+
   }
+
 }

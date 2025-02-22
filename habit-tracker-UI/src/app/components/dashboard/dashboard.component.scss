@@ -1,4 +1,13 @@
-h2 {
+h2, p {
   padding: 1rem;
   margin-left: 2rem;
+}
+.active-habits {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+app-active-habit {
+  margin: 1rem;
 }

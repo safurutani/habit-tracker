@@ -4,11 +4,11 @@ import { RouterLink } from '@angular/router';
 import { ActiveHabitComponent } from '../active-habit/active-habit.component';
 import { Habit } from '../../models/habit';
 import { HabitService } from '../../services/habit.service';
-
+import { MatGridListModule } from '@angular/material/grid-list';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, RouterLink, ActiveHabitComponent],
+  imports: [CommonModule, RouterLink, ActiveHabitComponent, MatGridListModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })

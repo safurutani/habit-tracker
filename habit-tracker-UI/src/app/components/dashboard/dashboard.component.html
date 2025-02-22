@@ -1,8 +1,8 @@
 <div class="dashboard">
   <h2>Active Habits</h2>
-  <ul *ngIf="habits.length > 0; else noHabits">
+  <div class="active-habits" *ngIf="habits.length > 0; else noHabits">
     <app-active-habit *ngFor="let habit of habits" [habit]="habit"></app-active-habit>
-  </ul>
+  </div>
 
   <ng-template #noHabits>
     <p>There are currently no active habits</p>

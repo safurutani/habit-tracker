@@ -9,6 +9,10 @@
   max-width: 600px;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
 .card-title, .completion-details {
   display: flex;
 }

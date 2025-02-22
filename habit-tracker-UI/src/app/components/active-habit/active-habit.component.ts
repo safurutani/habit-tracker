@@ -2,11 +2,11 @@ import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { Habit } from '../../models/habit';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { HabitService } from '../../services/habit.service';
-
+import { MatCardModule } from '@angular/material/card'; 
 @Component({
   selector: 'app-active-habit',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, MatCardModule],
   templateUrl: './active-habit.component.html',
   styleUrl: './active-habit.component.scss'
 })
@@ -35,9 +35,6 @@ export class ActiveHabitComponent {
         if (increment) {
           this.habit.totalCompleted++;
           this.habit.lastCompleted = new Date();
-          console.log(yesterday.toDateString());
-          console.log(this.habit.lastCompleted.toDateString() === yesterday.toDateString());
-          console.log(this.habit.lastCompleted.toDateString());
           if (this.habit.lastCompleted.toDateString() === yesterday.toDateString() || this.habit.lastCompleted.toDateString() === null) {
             this.habit.streak++;
           }
