@@ -4,6 +4,7 @@
 
   a {
     text-decoration: none;
+    font-weight: 400;
     color: white;
     font-size: 1rem;
     margin: 4px;
@@ -18,7 +19,6 @@
     }
 
     &.active {
-      font-weight: bold;
       border-bottom: 2px solid white;
     }
   }
@@ -27,7 +27,23 @@ header {
   display: flex;
 }
 
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 h1 {
   padding: 1rem;
   margin-left: 2rem;
+}
+
+.mat-toolbar {
+  background-color: indigo !important;
+  color: white !important;
+}
+
+.mat-mdc-paginator-container {
+  display: flex;
+  justify-content: center;
+  align-items:center;
 }

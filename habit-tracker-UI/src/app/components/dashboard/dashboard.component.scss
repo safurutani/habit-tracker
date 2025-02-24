@@ -1,12 +1,14 @@
 h2, p {
   padding: 1rem;
   margin-left: 2rem;
+  margin-top: 1rem;
 }
 .active-habits {
   display: flex;
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
+  margin-left: 2rem;
 }
 app-active-habit {
   margin: 1rem;

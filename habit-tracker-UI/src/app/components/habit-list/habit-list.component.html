@@ -1,7 +1,6 @@
-<h2>Habit List</h2>
-
 <div class="table-container">
-  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  <h2>Habit List</h2>
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z2">
 
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Habit Name</th>
@@ -24,26 +23,32 @@
       </td>
     </ng-container>
 
-    <ng-container matColumnDef="totalCompleted">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Completed</th>
-      <td mat-cell *matCellDef="let habit">
-        {{ habit.totalCompleted }}
-      </td>
-    </ng-container>
+   <ng-container matColumnDef="totalCompleted">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+    <div class="header-content">Total Completed</div>
+  </th>
+  <td mat-cell *matCellDef="let habit" class="centered">
+    {{ habit.totalCompleted }}
+  </td>
+</ng-container>
 
-    <ng-container matColumnDef="streak">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Streak</th>
-      <td mat-cell *matCellDef="let habit">
-        {{ habit.streak }}
-      </td>
-    </ng-container>
+<ng-container matColumnDef="streak">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+    <div class="header-content">Streak</div>
+  </th>
+  <td mat-cell *matCellDef="let habit" class="centered">
+    {{ habit.streak }}
+  </td>
+</ng-container>
 
-    <ng-container matColumnDef="active">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Active</th>
-      <td mat-cell *matCellDef="let habit">
-        {{ habit.isActive ? "Yes" : "No" }}
-      </td>
-    </ng-container>
+<ng-container matColumnDef="active">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+    <div class="header-content">Active</div>
+  </th>
+  <td mat-cell *matCellDef="let habit" class="centered">
+    {{ habit.isActive ? "Yes" : "No" }}
+  </td>
+</ng-container>
 
     <thead>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -52,6 +57,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </tbody>
   </table>
+  <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
 </div>
 
-<mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
+

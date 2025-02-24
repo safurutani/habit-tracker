@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { HabitService } from '../../services/habit.service';
 import { Habit } from '../../models/habit';
 import { CommonModule } from '@angular/common';
@@ -13,7 +13,8 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
   standalone: true,
   imports: [CommonModule, HabitComponent, RouterLink, MatTableModule, MatSortModule, MatPaginatorModule],
   templateUrl: './habit-list.component.html',
-  styleUrl: './habit-list.component.scss'
+  styleUrl: './habit-list.component.scss',
+  encapsulation: ViewEncapsulation.None
 })
 export class HabitListComponent implements OnInit {
   displayedColumns: string[] = ['name', 'description', 'frequency', 'totalCompleted', 'streak','active'];

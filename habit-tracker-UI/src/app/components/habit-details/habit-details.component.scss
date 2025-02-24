@@ -10,3 +10,17 @@
     }
 }
 
+.mdc-button:enabled {
+  background-color: purple !important;
+  color: white;
+}
+
+.edit-delete {
+  padding-top: 2rem;
+  display: flex;
+  padding-bottom: 2rem;
+
+  :nth-child(2) {
+    margin-left: 1rem;
+  }
+}

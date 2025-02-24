@@ -22,7 +22,7 @@ export class HabitFormComponent {
       description: [''],
       goal: [1, [Validators.required, Validators.min(1)]],
       frequency: [1, [Validators.required, Validators.min(1)]],
-      frequencyUnit: ['Day', Validators.required],
+      frequencyUnit: ['', Validators.required],
 
       // Not shown in form
       startDate: [new Date()],
@@ -53,7 +53,13 @@ export class HabitFormComponent {
       };
       this.habitService.createHabit(newHabit).subscribe(response => {
         console.log('Habit created', response);
-        this.habitForm.reset();
+        this.habitForm.reset({
+          name: '',
+          description: '',
+          goal: 1,
+          frequency: 1,
+          frequencyUnit: ''
+        });
       });
     }
   }

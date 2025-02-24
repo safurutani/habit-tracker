@@ -5,8 +5,56 @@ h2 {
 .table-container {
   width: 100%;
   overflow-x: auto;
+  max-width: 1080px;
+  padding: 1rem;
+  border-radius: 10px
 }
+
 a {
   color: inherit;
   font-weight: bold;
+}
+
+.mat-mdc-header-row {
+  background-color: indigo !important;
+  color: white !important;
+}
+
+.mat-mdc-column-totalCompleted, .mat-mdc-column-streak, .mat-mdc-column-active {
+  text-align: center !important;
+}
+.mat-mdc-paginator-container {
+  justify-content: center !important;
+  margin-top: 1rem;
+}
+.mat-mdc-table {
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+}
+.mat-mdc-paginator-outer-container {
+  border-top: 1px solid rgba(0,0,0,0.12);
+  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
+}
+
+.mat-mdc-header-cell.mat-column-name,
+.mat-mdc-cell.mat-column-name {
+  padding-left: 32px !important;
+}
+
+.mat-mdc-header-cell.mat-column-totalCompleted,
+.mat-mdc-header-cell.mat-column-active,
+.mat-mdc-header-cell.mat-column-streak {
+  text-align: center;
+  padding-left: 32px !important;
+}
+
+.mat-mdc-header-cell.mat-column-totalCompleted .mat-sort-header-container,
+.mat-mdc-header-cell.mat-column-active .mat-sort-header-container,
+.mat-mdc-header-cell.mat-column-streak .mat-sort-header-container {
+  justify-content: center; 
+}
+
+.mat-mdc-cell.mat-column-totalCompleted,
+.mat-mdc-cell.mat-column-active,
+.mat-mdc-cell.mat-column-streak {
+  text-align: center
 }

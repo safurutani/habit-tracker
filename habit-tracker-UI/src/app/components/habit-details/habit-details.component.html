@@ -11,7 +11,10 @@
   <div class="active-field">
     <p>Active </p><mat-slide-toggle [(ngModel)]="habit.isActive" (change)="onChange($event.checked)"></mat-slide-toggle>
   </div>
-  <button [routerLink]="['/edit', habit.id]">Edit</button>
-  <button>Delete</button>
-  <button routerLink="/habits">Back to List</button>
+  <div class="edit-delete">
+    <button mat-raised-button [routerLink]="['/edit', habit.id]">Edit</button>
+    <button mat-raised-button (click)="onDelete()">Delete</button>
+  </div>
+  
+  <button mat-raised-button routerLink="/habits">Back to List</button>
 </div>
