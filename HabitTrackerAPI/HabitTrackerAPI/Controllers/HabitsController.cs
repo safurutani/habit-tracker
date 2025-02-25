@@ -88,7 +88,7 @@ namespace HabitTrackerAPI.Controllers
                 // Reset streak if last completed was not yesterday
                 else
                 {
-                    habit.Streak = 1; 
+                    habit.Streak = 1;
                 }
 
                 // Update longest streak
@@ -98,7 +98,16 @@ namespace HabitTrackerAPI.Controllers
                 }
 
                 habit.LastCompleted = today;
+
+                // Add to HabitCompletion table
+                HabitCompletion habitCompletion = new HabitCompletion
+                {
+                    HabitId = habit.Id,
+                    CompletedOn = today
+                };
+                _context.HabitCompletions.Add(habitCompletion);
             }
+
             // Decrement
             else
             {
@@ -106,11 +115,26 @@ namespace HabitTrackerAPI.Controllers
                 {
                     habit.TotalCompleted--;
                 }
+                if (habit.TotalCompleted == 0)
+                {
+                    habit.LastCompleted = null;
+                }
                 if (habit.LastCompleted.HasValue && habit.LastCompleted.Value.Date == today)
                 {
                     habit.Streak = Math.Max(0, habit.Streak - 1);
                 }
-                habit.LastCompleted = null;
+                
+
+                // Remove the most recent completion log
+                var mostRecentCompletion = await _context.HabitCompletions
+                    .Where(hc => hc.HabitId == id)
+                    .OrderByDescending(hc => hc.CompletedOn)
+                    .FirstOrDefaultAsync();
+
+                if (mostRecentCompletion != null)
+                {
+                    _context.HabitCompletions.Remove(mostRecentCompletion);
+                }
             }
             _context.Entry(habit).State = EntityState.Modified;
             await _context.SaveChangesAsync();
