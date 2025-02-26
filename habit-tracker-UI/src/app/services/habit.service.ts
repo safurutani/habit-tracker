@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Habit } from '../models/habit';
+import { HabitCompletion } from '../models/habit-completion';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -41,5 +42,14 @@ export class HabitService {
 
   deleteHabit(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  getHabitCompletions(month: number, year: number): Observable<HabitCompletion[]> {
+    return this.http.get<HabitCompletion[]>(`${this.apiUrl}/habit-completions`, {
+      params: {
+        month: month.toString(),
+        year: year.toString(),
+      },
+    });
   }
 }

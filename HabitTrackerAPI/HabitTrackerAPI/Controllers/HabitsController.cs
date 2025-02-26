@@ -20,6 +20,27 @@ namespace HabitTrackerAPI.Controllers
             return await _context.Habits.ToListAsync();
         }
 
+        [HttpGet("habit-completions")]
+        public async Task<ActionResult<IEnumerable<HabitCompletion>>> GetHabitCompletions([FromQuery] int month, [FromQuery] int year)
+        {
+            // Validate month and year
+            if (month < 1 || month > 12 || year < 1)
+            {
+                return BadRequest("Invalid month or year.");
+            }
+
+            // Calculate the start and end dates for the given month and year
+            var startDate = new DateTime(year, month, 1);
+            var endDate = startDate.AddMonths(1).AddDays(-1);
+
+            // Fetch habit completions within the specified month and year
+            var habitCompletions = await _context.HabitCompletions
+                .Where(hc => hc.CompletedOn >= startDate && hc.CompletedOn <= endDate)
+                .ToListAsync();
+
+            return habitCompletions;
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<Habit>> GetHabit(int id)
         {
