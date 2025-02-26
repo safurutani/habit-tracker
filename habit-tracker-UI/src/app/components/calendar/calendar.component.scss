@@ -4,3 +4,13 @@
   padding: 20px;
 }
 
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.mdc-button {
+  background-color: purple !important;
+  color: white !important;
+}

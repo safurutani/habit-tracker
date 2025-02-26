@@ -4,13 +4,14 @@ import { CalendarEvent, CalendarModule, CalendarView, CalendarUtils, CalendarA11
 import { HabitService } from '../../services/habit.service';
 import { DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { startOfMonth, endOfMonth } from 'date-fns';
+import { startOfMonth, endOfMonth, addMonths, subMonths } from 'date-fns';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @Component({
     selector: 'app-calendar',
     standalone: true,
-    imports: [CommonModule, CalendarModule],
+    imports: [CommonModule, CalendarModule, MatButtonModule],
     templateUrl: './calendar.component.html',
     styleUrls: ['./calendar.component.scss'],
     providers: [{ provide: DateAdapter, useFactory: adapterFactory }, CalendarUtils, CalendarA11y, CalendarDateFormatter, CalendarEventTitleFormatter]
@@ -51,5 +52,15 @@ export class CalendarComponent implements OnInit {
     onViewDateChange(date: Date): void {
         this.viewDate = date;
         this.loadHabitCompletions();
-    }
+  }
+
+  previousMonth(): void {
+    this.viewDate = subMonths(this.viewDate, 1); 
+    this.loadHabitCompletions();
+  }
+
+  nextMonth(): void {
+    this.viewDate = addMonths(this.viewDate, 1); 
+    this.loadHabitCompletions();
+  }
 }

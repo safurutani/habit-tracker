@@ -1,4 +1,9 @@
 <div class="calendar-container">
+  <div class="calendar-header">
+    <button mat-raised-button (click)="previousMonth()"><<</button>
+    <h2>{{ viewDate | date: 'MMMM y' }}</h2>
+    <button mat-raised-button (click)="nextMonth()">>></button>
+  </div>
   <mwl-calendar-month-view [viewDate]="viewDate"
                            [events]="events"
                            (viewDateChange)="onViewDateChange($any($event))">
