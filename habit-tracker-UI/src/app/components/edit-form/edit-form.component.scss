@@ -1,12 +1,72 @@
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+form {
+  padding: 1rem;
+  margin: auto;
+}
+
+.create-habit-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .frequency {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 1rem;
 
-  p {
-    padding: 0px 10px;
+  .divider {
+    margin: 0 5px;
+  }
+
+  .mat-mdc-form-field-type-mat-input {
+    width: 80px;
+  }
+
+  .mat-mdc-form-field-type-mat-select {
+    width: 120px;
   }
 }
 
-.edit-form {
-  padding: 1rem;
-  margin-left: 2rem;
+.frequency-input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.mdc-button:enabled {
+  background-color: purple !important;
+  color: white;
+}
+
+h2 {
+  padding-top: 1rem;
+  margin: auto;
+}
+
+.goal-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .mat-mdc-form-field-type-mat-input {
+    width: 80px;
+  }
+}
+
+.goal-frequency-row, .frequency-input {
+  display: flex;
+}
+
+.habit-color {
+    display: flex;
+    flex-direction :column;
 }

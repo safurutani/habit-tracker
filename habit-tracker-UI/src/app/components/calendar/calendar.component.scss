@@ -14,3 +14,29 @@
   background-color: purple !important;
   color: white !important;
 }
+.cal-day-badge {
+  display: none !important;
+}
+.cal-month-view .cal-day-number {
+  color: black !important;
+  opacity: 0.75 !important;
+}
+div.cal-event {
+  height: 16px !important;
+  width: 16px !important;
+}
+div.cal-event:hover {
+    cursor: pointer;
+}
+.cal-day-cell:hover {
+  background-color: #ffc10733 !important;
+  cursor: default !important;
+}
+.cal-day-cell {
+  background-color: transparent !important;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.cal-month-view .cal-cell-row.cal-header {
+  font-weight:500;
+}

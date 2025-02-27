@@ -10,7 +10,7 @@
     <mat-form-field>
       <textarea matInput formControlName="description"></textarea>
     </mat-form-field>
-    <div class="last-row">
+    <div class="goal-frequency-row">
       <div class="goal-input">
         <label>Goal</label>
         <mat-form-field>
@@ -37,7 +37,12 @@
         </div>
       </div>
     </div>
-    
+    <div class="habit-color">
+      <mat-label>Color</mat-label>
+      <mat-form-field>
+        <input matInput formControlName="color" type="color" />
+      </mat-form-field>
+    </div>
     <button mat-raised-button type="submit" [disabled]="habitForm.invalid">Create Habit</button>
   </form>
 

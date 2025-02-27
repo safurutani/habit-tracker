@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CalendarEvent, CalendarModule, CalendarView, CalendarUtils, CalendarA11y, CalendarDateFormatter, CalendarEventTitleFormatter } from 'angular-calendar';
 import { HabitService } from '../../services/habit.service';
@@ -14,13 +14,15 @@ import { MatButtonModule } from '@angular/material/button';
     imports: [CommonModule, CalendarModule, MatButtonModule],
     templateUrl: './calendar.component.html',
     styleUrls: ['./calendar.component.scss'],
-    providers: [{ provide: DateAdapter, useFactory: adapterFactory }, CalendarUtils, CalendarA11y, CalendarDateFormatter, CalendarEventTitleFormatter]
+  providers: [{ provide: DateAdapter, useFactory: adapterFactory }, CalendarUtils, CalendarA11y, CalendarDateFormatter, CalendarEventTitleFormatter],
+  encapsulation: ViewEncapsulation.None,
 })
 export class CalendarComponent implements OnInit {
     view: CalendarView = CalendarView.Month;
     viewDate: Date = new Date();
     events: CalendarEvent[] = [];
-
+    tooltipVisible: Boolean = false;
+    tooltipText: string = '';
     constructor(private habitService: HabitService) { }
 
     ngOnInit(): void {
@@ -38,8 +40,8 @@ export class CalendarComponent implements OnInit {
             start: new Date(completion.completedOn),
             title: completion.habitName,
             color: {
-              primary: '#ad2121',
-              secondary: '#FAE3E3',
+              primary: completion.habitColor,
+              secondary: 'transparent',
             },
           }));
         },
@@ -49,7 +51,7 @@ export class CalendarComponent implements OnInit {
       });
     }
 
-    onViewDateChange(date: Date): void {
+  onViewDateChange(date: Date): void {
         this.viewDate = date;
         this.loadHabitCompletions();
   }
@@ -63,4 +65,14 @@ export class CalendarComponent implements OnInit {
     this.viewDate = addMonths(this.viewDate, 1); 
     this.loadHabitCompletions();
   }
+
+  showTooltip(event: CalendarEvent): void {
+    this.tooltipVisible = true;
+    this.tooltipText = event.title;
+  }
+
+  hideTooltip(): void {
+    this.tooltipVisible = false;
+  }
+
 }

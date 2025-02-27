@@ -59,9 +59,12 @@ h2 {
   }
 }
 
-.last-row, .frequency-input {
+.goal-frequency-row, .frequency-input {
     display: flex;
 
 }
 
-
+.habit-color {
+  display: flex;
+  flex-direction: column;
+}

@@ -8,6 +8,10 @@
   <p>Total Completions: {{ habit.totalCompleted }}</p>
   <p>Last Completed: {{ habit.lastCompleted ? (habit.lastCompleted | date:'MMMM d, yyyy') : 'Not completed yet' }}</p>
   <p>Streak: {{ habit.streak }} (Longest: {{ habit.longestStreak }})</p>
+  <div class="color">
+    <p>Color: </p>
+    <div class="color-box" [style.backgroundColor]="habit.color"></div>
+  </div>
   <div class="active-field">
     <p>Active </p><mat-slide-toggle [(ngModel)]="habit.isActive" (change)="onChange($event.checked)"></mat-slide-toggle>
   </div>

@@ -23,6 +23,7 @@ export class HabitFormComponent {
       goal: [1, [Validators.required, Validators.min(1)]],
       frequency: [1, [Validators.required, Validators.min(1)]],
       frequencyUnit: ['', Validators.required],
+      color: ['#FF0000'], 
 
       // Not shown in form
       startDate: [new Date()],
@@ -43,6 +44,7 @@ export class HabitFormComponent {
         goal: this.habitForm.value.goal,
         frequency: this.habitForm.value.frequency,
         frequencyUnit: this.habitForm.value.frequencyUnit,
+        color: this.habitForm.value.color,
 
         // Not shown in form
         totalCompleted: 0,
@@ -58,7 +60,8 @@ export class HabitFormComponent {
           description: '',
           goal: 1,
           frequency: 1,
-          frequencyUnit: ''
+          frequencyUnit: '',
+          color: '#FF0000'
         });
       });
     }

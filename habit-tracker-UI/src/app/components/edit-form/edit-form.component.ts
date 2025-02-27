@@ -3,11 +3,16 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Habit } from '../../models/habit';
 import { HabitService } from '../../services/habit.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatOptionModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-edit-form',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatOptionModule, MatButtonModule],
   templateUrl: './edit-form.component.html',
   styleUrl: './edit-form.component.scss'
 })
@@ -33,7 +38,8 @@ export class EditFormComponent implements OnInit{
       description: [''],
       goal: ['', [Validators.required, Validators.min(1)]],
       frequency: ['', [Validators.required, Validators.min(1)]],
-      frequencyUnit: ['', Validators.required]
+      frequencyUnit: ['', Validators.required],
+      color: ['#FF0000']
     });
 
     // populate form with existing habit data
@@ -44,7 +50,8 @@ export class EditFormComponent implements OnInit{
         description: [this.habit.description],
         goal: [this.habit.goal, [Validators.required, Validators.min(1)]],
         frequency: [this.habit.frequency, [Validators.required, Validators.min(1)]],
-        frequencyUnit: [this.habit.frequencyUnit, Validators.required]
+        frequencyUnit: [this.habit.frequencyUnit, Validators.required],
+        color: [this.habit.color]
       });
     });
   }

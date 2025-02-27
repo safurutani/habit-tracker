@@ -4,4 +4,10 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
-
+// calendar styles
+.cal-header:hover,
+div.cal-cell-row.cal-header .cal-cell:hover,
+.cal-cell-row:hover {
+  background-color: transparent !important;
+  cursor: default !important;
+}

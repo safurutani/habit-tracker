@@ -5,10 +5,22 @@ import { Habit } from '../models/habit';
 import { HabitCompletion } from '../models/habit-completion';
 import { environment } from '../../environments/environment';
 
+interface HabitCompletionDto {
+  id: number;
+  habitId: number;
+  completedOn: Date;
+  habitName: string;
+  habitColor: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
+
+
+
 export class HabitService {
+
   private apiUrl = environment.apiUrl;
   constructor(private http: HttpClient) { }
 
@@ -44,8 +56,8 @@ export class HabitService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
-  getHabitCompletions(month: number, year: number): Observable<HabitCompletion[]> {
-    return this.http.get<HabitCompletion[]>(`${this.apiUrl}/habit-completions`, {
+  getHabitCompletions(month: number, year: number): Observable<HabitCompletionDto[]> {
+    return this.http.get<HabitCompletionDto[]>(`${this.apiUrl}/habit-completions`, {
       params: {
         month: month.toString(),
         year: year.toString(),

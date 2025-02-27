@@ -14,6 +14,7 @@
         public bool IsActive { get; set; } = true;
         public int Streak { get; set; } = 0;
         public int LongestStreak { get; set; } = 0;
+        public string Color { get; set; } = "#FF0000";
 
     }
 }

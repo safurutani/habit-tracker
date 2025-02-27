@@ -11,4 +11,5 @@ export interface Habit {
   isActive: boolean;
   streak: number;
   longestStreak: number;
+  color: string;
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HabitTrackerAPI.Models;
+
 namespace HabitTrackerAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -21,7 +22,7 @@ namespace HabitTrackerAPI.Controllers
         }
 
         [HttpGet("habit-completions")]
-        public async Task<ActionResult<IEnumerable<HabitCompletion>>> GetHabitCompletions([FromQuery] int month, [FromQuery] int year)
+        public async Task<ActionResult<IEnumerable<HabitCompletionDto>>> GetHabitCompletions([FromQuery] int month, [FromQuery] int year)
         {
             // Validate month and year
             if (month < 1 || month > 12 || year < 1)
@@ -35,8 +36,22 @@ namespace HabitTrackerAPI.Controllers
 
             // Fetch habit completions within the specified month and year
             var habitCompletions = await _context.HabitCompletions
-                .Where(hc => hc.CompletedOn >= startDate && hc.CompletedOn <= endDate)
-                .ToListAsync();
+            .Where(hc => hc.CompletedOn >= startDate && hc.CompletedOn <= endDate)
+            .Join(
+                _context.Habits, 
+                hc => hc.HabitId, 
+                h => h.Id, 
+                (hc, h) => new HabitCompletionDto
+                {
+                    Id = hc.Id,
+                    HabitId = hc.HabitId,
+                    CompletedOn = hc.CompletedOn,
+                    HabitName = h.Name ?? "Unknown",
+                    HabitColor = h.Color ?? "#FF0000"
+                }
+            )
+            .ToListAsync();
+
 
             return habitCompletions;
         }
@@ -93,7 +108,7 @@ namespace HabitTrackerAPI.Controllers
                 return NotFound();
             }
             bool increment = request.Increment;
-            DateTime today = DateTime.UtcNow.Date;
+            DateTime today = DateTime.Now.Date;
 
             // Increment
             if (increment)
@@ -119,7 +134,8 @@ namespace HabitTrackerAPI.Controllers
                 }
 
                 habit.LastCompleted = today;
-
+                Console.WriteLine($"Today's date: {today}");
+                Console.WriteLine($"Last completed date: {habit.LastCompleted}");
                 // Add to HabitCompletion table
                 HabitCompletion habitCompletion = new HabitCompletion
                 {
